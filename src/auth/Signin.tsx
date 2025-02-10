@@ -2,22 +2,33 @@ import { useRef } from "react"
 import { Inputbox } from "../components/ui/AddContent"
 import { Button } from "../components/ui/Button"
 import axios from "axios"
-import { BACKEND_URL } from "../config"
+import {BACKEND_URL } from "../config"
 import { useNavigate } from "react-router-dom"
 const Signin = () => {
     const userNameRef = useRef<HTMLInputElement>()
     const passowordRef = useRef<HTMLInputElement>()
     const navigate = useNavigate()  
     async function signIn() {
-        const username = userNameRef.current?.value;
-        const password = passowordRef.current?.value;
-        const response = await axios.post(`${BACKEND_URL}signin`, {
-            username,
-            password
-        })
-        localStorage.setItem('token', response.data.token);
-        alert("SignIn Successfull")
-        navigate('/dashboard')
+        try {
+            const response = await axios.post(
+                `${BACKEND_URL}signin`,
+                {
+                    username: userNameRef.current?.value,
+                    password: passowordRef.current?.value
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true
+                }
+            );
+            localStorage.setItem('token', response.data.token);
+            navigate('/dashboard');
+        } catch (error) {
+            console.error('Signin error:', error);
+            alert('Failed to sign in');
+        }
     }
     return (
         <div className="flex justify-center bg-gray-300 items-center flex-col h-screen">
