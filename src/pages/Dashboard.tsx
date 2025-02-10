@@ -13,7 +13,7 @@ export const Dashboard = () => {
   const [modelOpen, setmodelOpen] = useState(false);
   const content = useContent();
   return (
-    <>
+    <div className="min-h-screen bg-gray-900 text-white">
       <div className="flex">
         <Sidebar Headicon={<LuBrain />} Head="Brainly" />
         <div className="flex-1 ml-64 p-4">
@@ -32,15 +32,12 @@ export const Dashboard = () => {
               text="Share Brain"
               size="sm"
               onClick={() => {
-              navigator.clipboard.writeText(window.location.href).then(() => {
-                alert("Brain link copied to clipboard!");
-              }).catch(err => {
-                console.error("Failed to copy: ", err);
-              });
+                navigator.clipboard.writeText(window.location.href)
+                  .then(() => alert("Brain link copied to clipboard!"))
+                  .catch(err => console.error("Failed to copy: ", err));
               }}
             />
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {content && content.map(({ _id, title, link, type }) => (
               <div key={_id}>
@@ -56,6 +53,6 @@ export const Dashboard = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

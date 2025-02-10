@@ -37,8 +37,8 @@ export const AddContent = ({ open, onClose }: proptypes) => {
             <div className=" h-screen  flex flex-col justify-center items-center opacity-100">
                 <div className="bg-white rounded-md p-2">
                     <div className="justify-end flex">
-                        <div onClick={onClose} className="cursor-pointer">
-                            <Closeicon size="lg" />
+                        <div onClick={onClose} className="cursor-pointer bg-black">
+                            <Closeicon  size="lg" />
                         </div>
                     </div>
                     <span>

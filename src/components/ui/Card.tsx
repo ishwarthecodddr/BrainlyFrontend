@@ -12,7 +12,7 @@ interface Cardprops {
     link: string
 }
 export const Card = (props: Cardprops) => {
-    return <div className="shadow-md w-80 p-2 border border-gray-200">
+    return <div className="shadow-md w-80 p-2 border border-gray-400 shadow-green-400">
         <div>
             <div className="flex items-center gap-2 justify-between">
                 <div className="flex items-center ">
@@ -27,7 +27,7 @@ export const Card = (props: Cardprops) => {
         </div>
         <div className="mt-2">
             {props.type === "Youtube" && (
-                <div className="relative w-full pt-[56.25%]">
+                <div className="relative w-full pt-[56.25%] z-[-1]">
                     <iframe 
                         className="absolute top-0 left-0 w-full h-full rounded-md"
                         src={props.link.replace("watch?v=", "embed/")} 
@@ -38,9 +38,11 @@ export const Card = (props: Cardprops) => {
                 </div>
             )}
             {props.type === "Twitter" && (
+                <div className="z-[-1]">
                 <blockquote className="twitter-tweet">
                     <a href={props.link.replace("x.com", "twitter.com")}></a>
                 </blockquote>
+                </div>
             )}
         </div>
     </div>
