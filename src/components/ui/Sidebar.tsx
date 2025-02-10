@@ -1,7 +1,7 @@
-import {MdVideoSettings } from "react-icons/md";
+import { MdVideoSettings } from "react-icons/md";
 import { CiTwitter } from "react-icons/ci";
 import axios from "axios";
-
+import { BACKEND_URL } from "../../config";
 interface sidebarprops {
   Headicon: any;
   Head: string;
@@ -9,18 +9,18 @@ interface sidebarprops {
 
 export const Sidebar = (props: sidebarprops) => {
   async function getTwitterContent() {
-    const content = await axios.get("http://localhost:3000/content")
+    const content = await axios.get(`${BACKEND_URL}/content`)
     console.log(content)
   }
   function getYoutubeContent() {
-    
+
   }
   return (
     <div className="h-screen fixed left-0 top-0 border-r-2 p-4">
-          <div className="flex items-center mb-6 text-3xl ">
-              <span className="text-purple-600 ">
-                  
-        {props.Headicon}
+      <div className="flex items-center mb-6 text-3xl ">
+        <span className="text-purple-600 ">
+
+          {props.Headicon}
         </span>
         <h1 className="ml-2 text-2xl font-bold">{props.Head}</h1>
       </div>
@@ -35,10 +35,10 @@ export const Sidebar = (props: sidebarprops) => {
 interface itemprops {
   icon: any;
   title: string;
-  onClick:()=>void
+  onClick: () => void
 }
 
-function Row({ icon, title , onClick }: itemprops) {
+function Row({ icon, title, onClick }: itemprops) {
   return (
     <div className="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded cursor-pointer" onClick={onClick}>
       {icon}
