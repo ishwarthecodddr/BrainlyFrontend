@@ -76,6 +76,6 @@ export const AddContent = ({ open, onClose }: proptypes) => {
 
 export function Inputbox({ refrence, placeholder, type }: { refrence?: any, placeholder: string, type: string }) {
     return <div className="m-3 rounded ">
-        <input type={type} ref={refrence} className="p-1 rounded border border-gray-400 w-full"  placeholder={placeholder} />
+        <input type={type} ref={refrence} className="p-1 rounded border border-gray-400 w-full text-black"  placeholder={placeholder} />
     </div>
 }
