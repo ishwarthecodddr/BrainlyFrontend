@@ -23,7 +23,7 @@ const defaultStyle = "rounded-lg w-auto m-1"
 
 export const Button = (props: buttonProps) => {
     return <div>
-        <button onClick={props.onClick} className={`${variantStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size]} flex justify-center items-center`}>
+        <button onClick={props.onClick} className={`${variantStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size]} flex justify-center items-center hover:bg-violet-600`}>
             {(props.starticon) ? <div className="mr-1">{props.starticon}</div>:null}  {props.text}
         </button>
     </div>
